@@ -3,7 +3,7 @@ import Signup from './components/Signup'
 import Login from './components/Login'
 import Home from './components/Home'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -15,7 +15,7 @@ function App() {
     }
   }, []);
 
-  const ProtectedRoute = ({ children }) => { // protect the / route
+  const ProtectedRoute = ({ children }: { children: React.ReactNode }) => { // protect the / route
     if (!isLoggedIn) {
       return <Navigate to="/login" />;
     }
